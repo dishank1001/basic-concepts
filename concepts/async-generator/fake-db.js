@@ -11,3 +11,8 @@ async function* fakeDB() {
 const fun = fakeDB()
 console.log(await fun.next())   
 console.log(await fun.next())
+
+for await (const user of fakeDB()) {
+    if (user.id > 5) break             
+    console.log(user)
+}
